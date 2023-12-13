@@ -5,7 +5,7 @@ require_once "config.php";
 // Define variables and initialize with empty values
 // Define variables and initialize with empty values
 $studNum = $last_name = $first_name = $middle_name = $contact_number = $email_address = $birthday = $year_level = $program = "";
-$studNum_err = $last_name_err = $first_name_err = $middle_name_err = $contact_number_err = $email_address_err = $birthday_err = $year_level_err = $program_err = "";
+$studNum_err = $last_name_err = $first_name_err = $middle_name_err = $contact_number_err = $email_address_err = $birthday_err = $year_level_err = $program_err =  "";
 
 // Processing form data when form is submitted
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
@@ -16,7 +16,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     $input_studNum = trim($_POST["stud_Num"]);
     if (empty($input_studNum)) {
         $studNum_err = "Please enter your student Number.";
-    } elseif (!filter_var($input_studNum, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")))) { //int dapat
+    } elseif (!filter_var($input_studNum, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")))) { 
         $studNum_err = "Please enter a valid name.";
     } else {
         $studNum_err = $input_studNum;
@@ -97,6 +97,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $program = $input_program;
     }
 
+
     // Check input errors before inserting in database
     if ((empty($studNum_err)) && (empty($last_name_err)) && (empty($first_name_err)) && (empty($middle_name_err)) && (empty($contact_number__err)) && (empty($email_address_err)) && (empty($birthday_err)) && (empty($year_level_err)) && (empty($program_err))) {
         // Prepare an update statement
@@ -104,7 +105,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("isssissss", $param_studNum, $param_last_name, $param_first_name, $param_middle_name, $param_contact_number, $param_email_address, $param_birthday, $param_year_level, $param_program, $param_id);
+            $stmt->bind_param("ssssissss", $param_studNum, $param_last_name, $param_first_name, $param_middle_name, $param_contact_number, $param_email_address, $param_birthday, $param_year_level, $param_program, $param_id);
 
             // Set parameters
             $param_studNum = $studNum;

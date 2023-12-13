@@ -10,30 +10,44 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        body {
+            justify-content: center;
+            background-image: url("bg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover; /* Adjust as needed: cover, contain, etc. */
+            background-position: center center;
+            width: 100%;
+            height: 100vh;
+            margin: auto;
+            padding: auto;
+            
+        }
         .wrapper {
-            width: 600px;
+            width: 100%;
             margin: 0 auto;
+            padding: 40px;
         }
 
         table tr td:last-child {
-            width: 120px;
+            width: 100px;
         }
     </style>
-    <script>echo "<th>Name</th>";
+    <script>echo "<th>Surname</th>";
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </head>
 
+
 <body>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="mt-5 mb-3 clearfix">
+                    <div class="mt-3 mb-3 clearfix">
                         <h2 class="pull-left">Student Details</h2>
-                        <a href="registration/testReg.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Student</a>
+                        <a href="testReg.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Student</a>
                     </div>
                     <?php
                     // Include config file

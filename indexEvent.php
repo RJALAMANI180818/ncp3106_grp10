@@ -10,13 +10,28 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        body {
+            justify-content: center;
+            background-image: url("bg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover; /* Adjust as needed: cover, contain, etc. */
+            background-position: center center;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: auto;
+            
+        }
         .wrapper {
-            width: 600px;
+            width: 900px;
             margin: 0 auto;
         }
 
         table tr td:last-child {
             width: 120px;
+        }
+        table {
+            justify-content:center;
         }
     </style>
     <script>echo "<th>Event</th>";
@@ -54,26 +69,28 @@
                             echo "<th>Start Time</th>";
                             echo "<th>End Time</th>";
                             echo "<th>Registration Fee</th>";
+                            echo "<th>Venue</th>";
+                            echo "<th>Officer-in-charge</th>";
                             echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
                             while ($row = $result->fetch_array()) {
                                 echo "<tr>";
-                                echo "<td>" . $row['event id'] . "</td>";
-                                echo "<td>" . $row['event name'] . "</td>";
-                                echo "<td>" . $row['event description'] . "</td>";
-                                echo "<td>" . $row['event type'] . "</td>";
+                                echo "<td>" . $row['event_id'] . "</td>";
+                                echo "<td>" . $row['event_name'] . "</td>";
+                                echo "<td>" . $row['event_description'] . "</td>";
+                                echo "<td>" . $row['event_type'] . "</td>";
                                 echo "<td>" . $row['date'] . "</td>";
-                                echo "<td>" . $row['start time'] . "</td>";
-                                echo "<td>" . $row['end time'] . "</td>";
-                                echo "<td>" . $row['registration fee'] . "</td>";
+                                echo "<td>" . $row['start_time'] . "</td>";
+                                echo "<td>" . $row['end_time'] . "</td>";
+                                echo "<td>" . $row['registration_fee'] . "</td>";
                                 echo "<td>" . $row['venue'] . "</td>";
-                                echo "<td>" . $row['officer-in-charge'] . "</td>";
+                                echo "<td>" . $row['oic'] . "</td>";
                                 echo "<td>";
 
-                                // echo '<a href="read.php?id=' . $row['id'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                // echo '<a href="update.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                // echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $row['event_id'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $row['event_id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $row['event_id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                             }

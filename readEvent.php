@@ -5,7 +5,7 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
     require_once "config.php";  //tatawagin
 
     // Prepare a select statement
-    $sql = "SELECT * FROM employees WHERE id = ?";
+    $sql = "SELECT * FROM events WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
@@ -24,15 +24,17 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
 
                 // Retrieve individual field value
-                $studNum = $row['stud_Num'];
-                $last_name = $row['surname'];
-                $first_name = $row['first_name'];
-                $middle_name = $row['middle_name'];
-                $contact_number = $row['contact_number'];
-                $email_address = $row['email_address'];
-                $birthday = $row['birthday'];
-                $year_level = $row['year_level'];
-                $program = $row['program'];
+                $event_id = $row['event_id'];
+                $event_name = $row['event_name'];
+                $event_description = $row['event_description'];
+                $event_type = $row['event_type'];
+                $date = $row['date'];
+                $start_time = $row['start_time'];
+                $end_time = $row['end_time'];
+                $registration_fee = $row['registration_fee'];
+                $venue = $row['venue'];
+                $officer = $row['oic'];
+                
             } else {
                 // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: error.php");
@@ -77,40 +79,44 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
                 <div class="col-md-12">
                     <h1 class="mt-5 mb-3">View Record</h1>
                     <div class="form-group">
-                        <label>Student Number</label>
-                        <p><b><?php echo $row["stud_Num"]; ?></b></p>
+                        <label>Event ID</label>
+                        <p><b><?php echo $row["event_id"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Surname</label>
-                        <p><b><?php echo $row["surname"]; ?></b></p>
+                        <label>Event Name</label>
+                        <p><b><?php echo $row["event_name"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>First Name</label>
-                        <p><b><?php echo $row["first_name"]; ?></b></p>
+                        <label>Event Description</label>
+                        <p><b><?php echo $row["event_description"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Middle Name</label>
-                        <p><b><?php echo $row["middle_name"]; ?></b></p>
+                        <label>Event Type</label>
+                        <p><b><?php echo $row["event_type"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Contact Number</label>
-                        <p><b><?php echo $row["contact_number"]; ?></b></p>
+                        <label>Date</label>
+                        <p><b><?php echo $row["date"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Email Address</label>
-                        <p><b><?php echo $row["email_address"]; ?></b></p>
+                        <label>Start Time</label>
+                        <p><b><?php echo $row["start_time"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Birthday</label>
-                        <p><b><?php echo $row["birthday"]; ?></b></p>
+                        <label>End Time</label>
+                        <p><b><?php echo $row["end_time"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Year Level</label>
-                        <p><b><?php echo $row["year_level"]; ?></b></p>
+                        <label>Registration Fee</label>
+                        <p><b><?php echo $row["registration_fee"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Program</label>
-                        <p><b><?php echo $row["program"]; ?></b></p>
+                        <label>Venue</label>
+                        <p><b><?php echo $row["venue"]; ?></b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Officer-in-Charge</label>
+                        <p><b><?php echo $row["oic"]; ?></b></p>
                     </div>
                     <p><a href="index.php" class="btn btn-primary">Back</a></p>
                 </div>
